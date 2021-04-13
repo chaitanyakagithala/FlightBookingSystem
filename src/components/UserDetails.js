@@ -1,28 +1,28 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState ,useContext} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios';
-import Flights from './Flights'
-
+import { UserContext } from './UserContext';
 
 function UserDetails() {
+   const {setUserId} = useContext(UserContext)
     const history = useHistory()
     const [value, setValue] = useState({ userEmail: "", password: "" })
-    const userId = React.createContext;
 
     const eventHandler = async e => {
         e.preventDefault()
 
         const response = await axios.get(`/getByUserEmailAndPassword/${value.userEmail}/${value.password}`)
         const data = await response.data
-        console.log(data)
-
-        if (data !== null) {
+        if (data.userEmail != null) {
             console.log(data)
             history.push("/flights")
-
+            console.log(data.userId)
+            setUserId(data.userId)
         }
-        //return  <Redirect to = "/flights" />
-        console.log(data)
+        else{
+            alert("enter correct details")
+        }
+
     }
 
 

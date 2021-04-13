@@ -1,13 +1,18 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link,useHistory} from 'react-router-dom'
 
 function FlightManagement() {
 
+   const history = useHistory()
     const [flights,setFlight] = useState([])
-    const eventHandler = ()=>{
-      
-    }
+   // const [flightNum,setFlightNum] = useState(0)
+    const eventHandler = async (flightNum)=>{
+       
+     // const response =  await axios.delete(`/deleteFlight/${flightNum}`)
+        
+
+      }
     useEffect(()=>{
       axios.get("/getAllFlights")
       .then((response=>{
@@ -21,7 +26,7 @@ function FlightManagement() {
         <>
         <Link to = "addFlights">
         <button> Add  New FLights </button>
-        </Link>
+        </Link> 
           <h2> Flights Management</h2>
           <table >
             <thead >
@@ -38,6 +43,7 @@ function FlightManagement() {
                   <td >{item.flightNumber}</td>
                   <td>{item.arrivalTime}</td>
                   <td>{item.departureTime}</td>
+                  <button onClick = {eventHandler (item.flightNumber)}>Remove flight</button>
                   
                 </tr>
               })}

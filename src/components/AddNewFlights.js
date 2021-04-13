@@ -5,16 +5,17 @@ import {useHistory} from 'react-router-dom'
 function AddNewFlights() {
     const history = useHistory()
     const [value,setValue] = useState({flightNumber:0,arrivalTime:"",departureTime:""})
-    const eventHandler =(async()=>{
+    const eventHandler =(async(e)=>{
+        e.preventDefault()
         const response = await axios.post("/addFlight",value)
         const data = response.data
         if(response.status == 200){
             alert(data)
-           history.push("/flightmangement")
         }
         else{
             alert("give valid details")
         }
+        history.push("/flightmangement")
 
     })
     return (

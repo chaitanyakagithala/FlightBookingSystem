@@ -1,29 +1,33 @@
-import React ,{useState,useEffect} from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import React ,{useState,useContext} from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios';
+import { FlightContext,UserContext } from './UserContext';
 
 
 
 function Passenger() {
+    const {flightNumber} = useContext(FlightContext)
+    const {userId} = useContext(UserContext)
+
     const history = useHistory()
-    const [value, setValue] = useState({ pnrNumber: 0,passengerNamee: "",phoneNumber:"",flight:{flightNumber:"452"},user:{userId:"1"} })
+    const [value, setValue] = useState({ pnrNumber: 10,passengerName: "",phoneNumber:"",flight:{flightNumber},user:{userId} })
 
     const eventHandler = async e => {
         e.preventDefault()
     
-     const response =await axios.post(`/bookTicket`,value)
+     const response =await axios.post(`/bookTicket`,value )
      const data = await response.data
      console.log(data)
      console.log(response.status)
 
-    if( response.status==200){
+    if( response.status === 200){
         alert(`${data}`)
         history.push("/flights")
      }
      
 }
    
-
+ console.log({userId,flightNumber})
     return (
 
         

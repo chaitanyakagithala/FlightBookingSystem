@@ -1,28 +1,42 @@
 import axios from 'axios'
-import React,{useState,useEffect,useRef} from 'react'
-import {Link} from 'react-router-dom'
+import React,{useState,useEffect,useContext} from 'react'
+import {Link,useHistory} from 'react-router-dom'
+import { FlightContext, UserContext } from './UserContext'
 
 function Flights() {
 
+ const userId = useContext(UserContext)
+ const history = useHistory()
+ console.log(userId)
 const [flights,setFlight] = useState([])
-const [flightNum,setFlightnum] = useState(0)
-const inputRef = useRef(null)
+const {setFlightNum} = useContext(FlightContext)
 
-const eventHandler = ()=>{
+const eventHandler = (flightNum)=>{
   console.log(flightNum )
+  function myFunc(e){
+  setFlightNum(flightNum)
+  history.push("/bookticket")
+  }
+  return myFunc
 }
 useEffect(()=>{
   axios.get("/getAllFlights")
   .then((response=>{
     setFlight(response.data)
-    setFlightnum(inputRef.current.data)
+  
   }))
 },[])
 
   return (
 
-    <>
-      <button> Booking history</button>
+    <> 
+    <Link to = "/bookHistory">
+    <button> Booking history</button>
+    </Link>
+    <Link to = "/userlogin">
+    <button> Log Out</button>
+    </Link>
+     
       <h2>Flight Tickect Booking</h2>
       <table >
         <thead >
@@ -36,12 +50,12 @@ useEffect(()=>{
         <tbody>
           {flights.map(item => {
             return <tr key={item.Id}>
-              <td ref = {inputRef}>{item.flightNumber}</td>
+              <td >{item.flightNumber}</td>
               <td>{item.arrivalTime}</td>
               <td>{item.departureTime}</td>
-              <Link to = "/bookticket">
-              <button onClick = {eventHandler}> book</button>
-              </Link>
+              
+              <button onClick = {eventHandler(item.flightNumber)}> book</button>
+              
             </tr>
           })}
         </tbody>
