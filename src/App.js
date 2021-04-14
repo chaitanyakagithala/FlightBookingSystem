@@ -12,6 +12,7 @@ import AddNewFlights from './components/AddNewFlights';
 import BookHistory from './components/BookHistory';
 import { FlightContext, UserContext } from './components/UserContext';
 import React ,{useState} from 'react'
+import DeleteFlight from './components/DeleteFlight';
 
 function App() {
   const [userId,setUserId] = useState('')
@@ -35,6 +36,7 @@ function App() {
       <Route path = "/flightmangement" component ={FlightManagement}/>
       <Route path = "/addFlights" component = {AddNewFlights} />
       <Route path = "/bookHistory" component = {BookHistory}/>
+      <Route path = "/deleteFlight" component = {DeleteFlight}/>
       </FlightContext.Provider>
       </UserContext.Provider>
       </Switch>

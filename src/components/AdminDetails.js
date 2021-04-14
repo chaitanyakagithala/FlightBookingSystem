@@ -1,45 +1,49 @@
-import React ,{useState}from 'react'
-import {Link,useHistory} from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 
 function AdminDetails() {
 
     const AdminLogin = "chay@123"
     const AdminPassword = "chay123"
-    const [username,setUsername] = useState('')
-    const [password,setPassword] = useState('')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
     const history = useHistory()
-     const Clickhandler = () =>{
-      
-         if(username== AdminLogin& password ==AdminPassword){
-            alert(`${username}  ${password}`)
-             history.push("/flightmangement")
-         }
-         else{
-             alert("incorrect details")
-         }
-     }
+    const Clickhandler = () => {
+
+        if (username == AdminLogin & password == AdminPassword) {
+
+            history.push("/flightmangement")
+        }
+        else {
+            alert("incorrect details")
+        }
+    }
 
     return (
         <div>
-        <input 
-        type="text" 
-        name ="username" 
-        value = {username}
-        onChange = {e =>{setUsername(e.target.value)}}
-        placeholder = "username"
-        />
-        
-        <input 
-        type="password" 
-         name ="password"
-         value ={password}
-         onChange = {e=>{setPassword(e.target.value)}}
-         placeholder = "password"
-         />
-       
-        <button onClick = {Clickhandler}>login</button>
-    
-      </div>
+            <input
+                type="text"
+                required
+                name="username"
+                value={username}
+                onChange={e => { setUsername(e.target.value) }}
+                placeholder="username"
+            />
+            <br />
+            <input
+                type="password"
+                name="password"
+                required
+                value={password}
+                onChange={e => { setPassword(e.target.value) }}
+                placeholder="password"
+            />               
+             <br />
+
+
+            <button onClick={Clickhandler}>login</button>
+
+        </div>
     )
 }
 

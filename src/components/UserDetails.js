@@ -1,10 +1,10 @@
-import React, { useState ,useContext} from 'react'
+import React, { useState, useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios';
 import { UserContext } from './UserContext';
 
 function UserDetails() {
-   const {setUserId} = useContext(UserContext)
+    const { setUserId } = useContext(UserContext)
     const history = useHistory()
     const [value, setValue] = useState({ userEmail: "", password: "" })
 
@@ -19,7 +19,7 @@ function UserDetails() {
             console.log(data.userId)
             setUserId(data.userId)
         }
-        else{
+        else {
             alert("enter correct details")
         }
 
@@ -32,15 +32,19 @@ function UserDetails() {
         <div>
             <form onSubmit={eventHandler}>
                 <label>userEmail*</label>
-                <input type="text"
+                <input type="email"
                     value={value.userEmail}
+                    required
                     onChange={e => setValue({ ...value, userEmail: e.target.value })}
-                />
+                />                <br />
+
                 <label>password*</label>
-                <input type="text"
+                <input type="password"
+                required
                     value={value.password}
                     onChange={e => setValue({ ...value, password: e.target.value })}
                 />
+                <br />
 
                 <button type="submit"> login</button>
             </form>
