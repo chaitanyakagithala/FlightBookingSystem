@@ -5,7 +5,7 @@ import { FlightContext } from './UserContext'
 
 function DeleteFlight() {
    const history = useHistory() 
-  const [flightNum,setFlightNum] = useState(0)
+  //const [flightNum,setFlightNum] = useState(0)
  const {flightNumber} = useContext(FlightContext)
  const eventHandler =  ()=>{
      axios.delete(`/deleteFlight/${flightNumber}`)

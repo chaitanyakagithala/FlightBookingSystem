@@ -24,7 +24,7 @@ function App() {
     <>
       <Homepage/>
       <Switch>
-      <UserContext.Provider value = {{userId,setUserId:d=>{console.log(d);setUserId(d)}}}>
+      <UserContext.Provider value = {{userId,setUserId}}>
       <FlightContext.Provider value = {{flightNumber,setFlightNum}}>
      <Route path = "/bookticket" exact component = {Passenger}/>
       <Route path = "/adminlogin" exact component = {AdminDetails}/>

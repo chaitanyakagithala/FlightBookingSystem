@@ -15,7 +15,7 @@ function AdminDetails() {
             history.push("/flightmangement")
         }
         else {
-            alert("incorrect details")
+            alert("incorrect details enter again")
         }
     }
 
