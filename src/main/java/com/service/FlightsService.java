@@ -29,7 +29,7 @@ public class FlightsService {
 
 	public void deleteflight(Integer flightNumber) {
 
-		flightsRepository.deleteByflightNumber(flightNumber);
+		flightsRepository.deleteByflight_number(flightNumber);
 	}
 
 }
