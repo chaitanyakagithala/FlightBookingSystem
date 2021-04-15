@@ -43,8 +43,8 @@ public class User {
 	}
 	
 	
-	public User(int userId, String userEmail, String password, String name, String phoneNumber, List<Flights> flights,
-			List<Passenger> passengers) {
+	public User(int userId, String userEmail, String password, String name, String phoneNumber
+			) {
 		super();
 		this.userId = userId;
 		this.userEmail = userEmail;
@@ -52,7 +52,12 @@ public class User {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		//this.flights = flights;
-		this.passengers = passengers;
+		
+	}
+
+
+	public User(int i) {
+		// TODO Auto-generated constructor stub
 	}
 
 

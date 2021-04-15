@@ -44,6 +44,10 @@ public class Flights {
 	this.departureTime = departureTime;
    }
 	
+	public Flights(int i) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getFlightNumber() {
 		return flightNumber;
 	}
